@@ -37,7 +37,7 @@ const InfoBlock = styled.div`
 // const InfoHeader = styled.div``;
 
 const GitHubName = styled.h2`
-width: 150px;
+  width: 150px;
   margin-top: 0;
   margin-bottom: 2px;
   font-family: Space Mono;
@@ -47,7 +47,7 @@ width: 150px;
   line-height: 39px;
   @media (max-width: 400px) {
     font-size: 16px;
-    line-height: 10px;
+    line-height: 15px;
   }
 `;
 

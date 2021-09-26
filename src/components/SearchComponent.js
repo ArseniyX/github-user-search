@@ -86,11 +86,18 @@ const NoResults = styled.span`
 `;
 
 
-const SearchComponent = ({onChangeSearch, error, onSearchButton}) => {
+
+const SearchComponent = ({
+  onChangeSearch,
+  error,
+  onSearchButton,
+  onEnterPressed,
+}) => {
   return (
     <Search>
       <SearchInput
         onChange={onChangeSearch}
+        onKeyUp={onEnterPressed}
         placeholder="Search GitHub username..."
       />
       {error && <NoResults>No results</NoResults>}

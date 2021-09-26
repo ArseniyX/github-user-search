@@ -41,6 +41,13 @@ const App = () => {
     if (click !== ghName && ghName !== null) setClick(ghName);
   };
 
+  const onEnterPressed = (event, btn) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      onSearchButton()
+    }
+  };
+
   if (data === null) setData(defaultUser);
 
   useEffect(() => {
@@ -91,6 +98,7 @@ const App = () => {
             onChangeSearch={onChangeSearch}
             error={error}
             onSearchButton={onSearchButton}
+            onEnterPressed={onEnterPressed}
           />
 
           <InfoContainer>

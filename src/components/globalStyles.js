@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    margin: 0 15px;
+    margin: 0 17px;
     
   }
 
