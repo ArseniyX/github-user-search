@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/github-user-search/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/github-user-search/static/js/main.abaf79b7.chunk.js",
-    "main.js.map": "/github-user-search/static/js/main.abaf79b7.chunk.js.map",
-    "runtime-main.js": "/github-user-search/static/js/runtime-main.b9804806.js",
-    "runtime-main.js.map": "/github-user-search/static/js/runtime-main.b9804806.js.map",
-    "static/js/2.f8de8e06.chunk.js": "/github-user-search/static/js/2.f8de8e06.chunk.js",
-    "static/js/2.f8de8e06.chunk.js.map": "/github-user-search/static/js/2.f8de8e06.chunk.js.map",
-    "static/js/3.acbdcf74.chunk.js": "/github-user-search/static/js/3.acbdcf74.chunk.js",
-    "static/js/3.acbdcf74.chunk.js.map": "/github-user-search/static/js/3.acbdcf74.chunk.js.map",
+    "main.js": "/github-user-search/static/js/main.301e200d.chunk.js",
+    "main.js.map": "/github-user-search/static/js/main.301e200d.chunk.js.map",
+    "runtime-main.js": "/github-user-search/static/js/runtime-main.29980c93.js",
+    "runtime-main.js.map": "/github-user-search/static/js/runtime-main.29980c93.js.map",
+    "static/js/2.6fddebd8.chunk.js": "/github-user-search/static/js/2.6fddebd8.chunk.js",
+    "static/js/2.6fddebd8.chunk.js.map": "/github-user-search/static/js/2.6fddebd8.chunk.js.map",
+    "static/js/3.98155097.chunk.js": "/github-user-search/static/js/3.98155097.chunk.js",
+    "static/js/3.98155097.chunk.js.map": "/github-user-search/static/js/3.98155097.chunk.js.map",
     "index.html": "/github-user-search/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/github-user-search/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.f8de8e06.chunk.js.LICENSE.txt": "/github-user-search/static/js/2.f8de8e06.chunk.js.LICENSE.txt",
+    "static/js/2.6fddebd8.chunk.js.LICENSE.txt": "/github-user-search/static/js/2.6fddebd8.chunk.js.LICENSE.txt",
     "static/media/icon-company.6f78ffb3.svg": "/github-user-search/static/media/icon-company.6f78ffb3.svg",
     "static/media/icon-location.1237a42f.svg": "/github-user-search/static/media/icon-location.1237a42f.svg",
     "static/media/icon-moon.cce754ce.svg": "/github-user-search/static/media/icon-moon.cce754ce.svg",
@@ -21,9 +21,9 @@
     "static/media/icon-website.b7923f6c.svg": "/github-user-search/static/media/icon-website.b7923f6c.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b9804806.js",
-    "static/js/2.f8de8e06.chunk.js",
+    "static/js/runtime-main.29980c93.js",
+    "static/js/2.6fddebd8.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.abaf79b7.chunk.js"
+    "static/js/main.301e200d.chunk.js"
   ]
 }
