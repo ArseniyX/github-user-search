@@ -12,14 +12,13 @@ const SearchInput = styled.input`
   width: 100%;
 
   padding: 18px 50px;
-  display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
   font-family: Space Mono;
   font-size: 18px;
   line-height: 25px;
-  box-shadow: ${(theme) => theme.searchBoxShadow};
+  box-shadow: ${({ theme }) => theme.searchBoxShadow};
   border: none;
   border-radius: 15px;
 
@@ -30,9 +29,15 @@ const SearchInput = styled.input`
     scroll 13px 50%;
   outline: none;
 
+  &::placeholder {
+    opacity: 0.8;
+    word-spacing: 0px;
+  }
+
   @media (max-width: 450px) {
     font-size: 13px;
     height: 60px;
+    padding: 18px 45px;
   }
 `;
 
@@ -49,10 +54,9 @@ const SearchButton = styled.button`
   font-size: 18px;
   line-height: 24px;
   border: none;
+  word-spacing: 10px;
 
-  /* identical to box height */
-
-  color: #ffffff;
+  color: #fff;
 
   &:hover {
     cursor: pointer;
