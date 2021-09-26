@@ -26,7 +26,7 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  flex: 1 1 50%;
+  flex: 1 1 40%;
   margin-top: 10px;
   &.available {
     color: ${({ theme }) => theme.innerTextColor};
