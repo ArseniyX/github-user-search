@@ -44,18 +44,11 @@ const App = () => {
   if (data === null) setData(defaultUser);
 
   useEffect(() => {
-    console.clear()
     if (click !== "") {
       fetch(`https://api.github.com/users/${click}`)
         .then((response) => response.json())
         .then((users) => {
-          if (users.message !== "Not Found") {
-            setData(users);
-            setError(false);
-          } else {
-            setError(true);
-            console.clear();
-          }
+          users.message !== "Not Found" ? setData(users) : setError(true);
         })
         .catch((error) => {
           throw error;
@@ -68,6 +61,7 @@ const App = () => {
   };
 
   const onChangeSearch = (e) => {
+    setError(false);
     setGhName(e.target.value);
   };
 

@@ -12,7 +12,7 @@ const Table = styled.div`
   justify-content: space-around;
   border-radius: 10px;
   height: 85px;
-  min-width: 279px;
+  min-width: 230px;
   text-align: center;
   flex-direction: row;
   max-width: 480px;

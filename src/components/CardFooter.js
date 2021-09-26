@@ -20,7 +20,7 @@ const List = styled.ul`
     margin-left: 0;
     max-width: 1000px;
   }
-  @media (max-width: 510px) {
+  @media (max-width: 550px) {
     flex-direction: column;
   }
 `;
