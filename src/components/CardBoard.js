@@ -4,18 +4,24 @@ import styled from "styled-components";
 const tableArray = ["Repos", "Followers", "Following"];
 
 const Table = styled.div`
+  margin-top: 28px;
+  margin-left: 25%;
   display: flex;
+  
   background-color: ${({ theme }) => theme.body};
-  justify-content: space-between;
+  justify-content: space-around;
   border-radius: 10px;
   height: 85px;
-  max-width: 480px;
   min-width: 279px;
   text-align: center;
-  margin: 30px;
   flex-direction: row;
-  width: 100px;
-  padding: 20px 10px; /* this */
+  max-width: 480px;
+  padding: 12px 0;
+  @media (max-width: 800px) {
+    margin-top: 70px;
+    margin-left: 0;
+    max-width: 1000px;
+  }
 `;
 
 const Column = styled.div`
@@ -28,7 +34,6 @@ const Name = styled.p`
 `;
 
 const CardBoard = (props) => {
-  console.log(props.followers);
   return (
     <Table>
       {tableArray.map((name, index) => {

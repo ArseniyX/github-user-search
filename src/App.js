@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./components/globalStyles";
 import { lightTheme, darkTheme } from "./components/Themes";
-import search from "./assets/icon-search.svg";
 import CardBoard from "./components/CardBoard";
 import CardFooter from "./components/CardFooter";
 import Header from "./components/Header";
 import CardHeader from "./components/CardHeader";
+import defaultUser from "./utils/defaultUser";
+import SearchComponent from "./components/SearchComponent";
+import { StyledLink } from "./components/CardFooter";
 
 const Main = styled.main`
   width: 100%;
@@ -15,111 +17,51 @@ const Main = styled.main`
   max-width: 730px;
 `;
 
-const Search = styled.div`
-  display: flex;
-  position: relative;
-`;
-
-const SearchInput = styled.input`
-  height: 69px;
-  width: 100%;
-
-  padding: 18px 45px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  font-family: Space Mono;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 25px;
-  box-shadow: ${(theme) => theme.searchBoxShadow};
-  border: none;
-  border-radius: 15px;
-
-  /* identical to box height, or 192% */
-
-  color: ${({ theme }) => theme.innerTextColor};
-  background: ${({ theme }) => theme.innerSpaceBgColor} url(${search}) no-repeat
-    scroll 13px 22px;
-  outline: none;
-`;
-
-const SearchButton = styled.button`
-  height: 50px;
-  width: 106px;
-
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #0079ff;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-  border: none;
-
-  /* identical to box height */
-
-  color: #ffffff;
-
-  &:hover {
-    background: #60abff;
-  }
-`;
-
 const InfoContainer = styled.div`
-  padding: 30px;
+  padding: 6%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin: 24px auto;
   background: ${({ theme }) => theme.innerSpaceBgColor};
-  height: 419px;
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   border-radius: 15px;
   @media (min-width: 768px) {
   }
 `;
 
-const InfoImg = styled.img`
-  height: 117px;
-  @media (max-width: 375px) {
-    height: 70px;
-  }
-`;
-
-const InfoBlock = styled.div``;
-
-const InfoHeader = styled.div``;
-
-const GitHubName = styled.h2``;
-
-const GitHubLogin = styled.a``;
-
-const JoinedDate = styled.p``;
-
-const Bio = styled.p``;
-
 const App = () => {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [modeState, setModeState] = useState(prefersDark);
+  const [modeState, setModeState] = useState(prefersDark ? "dark" : "light");
   const [ghName, setGhName] = useState(null);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
+  const [click, setClick] = useState("");
 
   const onSearchButton = () => {
-    ghName !== null &&
-      fetch(`https://api.github.com/users/${ghName}`)
-        .then((response) => response.json())
-        .then((users) => setData(users));
+    if (click !== ghName && ghName !== null) setClick(ghName);
   };
 
+  if (data === null) setData(defaultUser);
+
   useEffect(() => {
-    const fetchData = async () => {
-      await data;
-    };
-    fetchData();
-  });
+    console.clear()
+    if (click !== "") {
+      fetch(`https://api.github.com/users/${click}`)
+        .then((response) => response.json())
+        .then((users) => {
+          if (users.message !== "Not Found") {
+            setData(users);
+            setError(false);
+          } else {
+            setError(true);
+            console.clear();
+          }
+        })
+        .catch((error) => {
+          throw error;
+        });
+    }
+  }, [click]);
 
   const themeToggler = () => {
     modeState === "light" ? setModeState("dark") : setModeState("light");
@@ -147,42 +89,59 @@ const App = () => {
 
   return (
     <ThemeProvider theme={modeState === "light" ? lightTheme : darkTheme}>
+      <GlobalStyles />
       <>
-        <GlobalStyles />
-        <>
-          <Header modeState={modeState} modeChange={themeToggler} />
-          <Main>
-            <Search>
-              <SearchInput
-                onChange={onChangeSearch}
-                placeholder="Search GitHub username..."
-              />
-              <SearchButton onClick={onSearchButton}>Search</SearchButton>
-            </Search>
+        <Header modeState={modeState} modeChange={themeToggler} />
+        <Main>
+          <SearchComponent
+            onChangeSearch={onChangeSearch}
+            error={error}
+            onSearchButton={onSearchButton}
+          />
 
-            <InfoContainer>
-              <CardHeader
-                avatar_url={avatar_url}
-                name={name}
-                html_url={html_url}
-                bio={bio}
-                login={login}
-                created_at={created_at}
-              />
-              <CardBoard
-                public_repos={public_repos}
-                followers={followers}
-                following={following}
-              />
-              <CardFooter
-                location={location}
-                blog={blog}
-                twitter_username={twitter_username}
-                company={company}
-              />
-            </InfoContainer>
-          </Main>
-        </>
+          <InfoContainer>
+            <CardHeader
+              avatar_url={avatar_url}
+              name={name}
+              html_url={html_url}
+              bio={bio}
+              login={login}
+              created_at={created_at}
+            />
+            <CardBoard
+              public_repos={public_repos}
+              followers={followers}
+              following={following}
+            />
+            <CardFooter
+              location={location}
+              blog={blog}
+              twitter_username={twitter_username}
+              company={company}
+            />
+          </InfoContainer>
+        </Main>
+        <footer style={{ textAlign: "center", marginTop: "35px" }}>
+          <div style={{ color: "grey" }}>
+            Challenge by{" "}
+            <StyledLink
+              href="https://www.frontendmentor.io?ref=challenge"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Frontend Mentor
+            </StyledLink>
+            . Coded by{" "}
+            <StyledLink
+              href="https://github.com/ArseniyX/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ArseniyX
+            </StyledLink>
+            .
+          </div>
+        </footer>
       </>
     </ThemeProvider>
   );
