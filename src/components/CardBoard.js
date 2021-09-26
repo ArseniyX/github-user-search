@@ -4,10 +4,10 @@ import styled from "styled-components";
 const tableArray = ["Repos", "Followers", "Following"];
 
 const Table = styled.div`
-  margin-top: 28px;
+  margin-top: 12px;
   margin-left: 25%;
   display: flex;
-  
+
   background-color: ${({ theme }) => theme.body};
   justify-content: space-around;
   border-radius: 10px;
@@ -18,7 +18,6 @@ const Table = styled.div`
   max-width: 480px;
   padding: 12px 0;
   @media (max-width: 800px) {
-    margin-top: 70px;
     margin-left: 0;
     max-width: 1000px;
   }
@@ -30,7 +29,13 @@ const Column = styled.div`
 `;
 
 const Name = styled.p`
+  font-size: 13px;
   margin: 0;
+`;
+
+const Count = styled.p`
+  font-weight: bold;
+  font-size: 16px;
 `;
 
 const CardBoard = (props) => {
@@ -41,7 +46,7 @@ const CardBoard = (props) => {
         return (
           <Column key={name}>
             <Name>{name}</Name>
-            <p>{props[keys[index]]}</p>
+            <Count>{props[keys[index]]}</Count>
           </Column>
         );
       })}

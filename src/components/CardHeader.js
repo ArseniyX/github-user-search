@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useMediaPredicate } from "react-media-hook";
 
 const Container = styled.div`
   display: block;
@@ -23,14 +24,15 @@ const InfoImg = styled.img`
 `;
 
 const InfoBlock = styled.div`
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   width: 100%;
   padding-left: 7%;
-  @media (max-width: 800px) {
+  @media (max-width: 574px) {
     position: static;
+    display: flex;
   }
 `;
 
@@ -65,18 +67,15 @@ const JoinedDate = styled.p`
   margin-top: 6px;
   margin-bottom: 0;
   color: ${({ theme }) => theme.joinedDateColor};
-  @media (max-width: 800px) {
+  @media (max-width: 574px) {
     position: static;
   }
 `;
 
 const Bio = styled.p`
   position: static;
-  @media (max-width: 800px) {
-    position: absolute;
-    left: 0;
-    bottom: -70px;
-  }
+  line-height: 25px;
+  font-size: 15px;
 `;
 
 const getDateFormatted = (date) => {
@@ -90,6 +89,7 @@ const getDateFormatted = (date) => {
 };
 
 const CardHeader = ({ avatar_url, name, html_url, login, created_at, bio }) => {
+  const tabletWidth = useMediaPredicate("(max-width: 574px)");
   return (
     <Container>
       <Title>
@@ -102,9 +102,14 @@ const CardHeader = ({ avatar_url, name, html_url, login, created_at, bio }) => {
           </GitHubLogin>
 
           <JoinedDate>Joined {getDateFormatted(created_at)}</JoinedDate>
-          <Bio>{bio === null ? "This profile has no bio" : bio}</Bio>
+          {!tabletWidth && (
+            <Bio>{bio === null ? "This profile has no bio" : bio}</Bio>
+          )}
         </InfoBlock>
       </Title>
+      {tabletWidth && (
+        <Bio>{bio === null ? "This profile has no bio" : bio}</Bio>
+      )}
     </Container>
   );
 };

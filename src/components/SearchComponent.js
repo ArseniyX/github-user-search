@@ -39,6 +39,10 @@ const SearchInput = styled.input`
     height: 60px;
     padding: 18px 45px;
   }
+
+  @media (max-width: 375px) {
+    font-size: 12px;
+  }
 `;
 
 const SearchButton = styled.button`
@@ -68,6 +72,7 @@ const SearchButton = styled.button`
     height: 46px;
     font-size: 14px;
   }
+  
 `;
 
 const NoResults = styled.span`
@@ -84,8 +89,6 @@ const NoResults = styled.span`
 
   color: #f74646;
 `;
-
-
 
 const SearchComponent = ({
   onChangeSearch,
